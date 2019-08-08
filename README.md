@@ -1,6 +1,6 @@
 # dongfang
 
-> A Vue.js project
+> 东方之华前端项目
 
 ## Build Setup
 
