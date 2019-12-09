@@ -5,7 +5,7 @@
       <div class="black_1"></div>
       <img class="logo" src="../assets/logo.png">
       <ul class="header">
-        <li><a href="">用户</a></li>
+        <li><router-link to="/login">用户</router-link></li>
         <li><a href="">简介</a></li>
         <li><a href="">首页</a></li>
         <div style="clear: both"></div>
@@ -17,6 +17,7 @@
       <div class="cil_li"><div class="dy cil"><a class="acil" href=""></a></div><p class="tip">地域类型</p></div>
       <div class="cil_li"><div class="mz cil"><a class="acil" href=""></a></div><p class="tip">民族类型</p></div>
     </div>
+    <div style="clear: both"></div>
   </div>
 </template>
 
@@ -33,7 +34,7 @@
     padding: 0;
   }
   .search{
-    margin-top: 30vh;
+    margin-top: 27vh;
     position: absolute;
   }
   .submit{
@@ -46,14 +47,14 @@
     height: 6vh;
   }
   input{
-    width: 50vw;
+    width: 44vw;
     padding: 5px 10px;
-    height: 9vh;
+    height: 8vh;
     border-radius: 4.5vh;
     background-color: rgba(0,0,0,0.46);
     font-size: 16px;
     color: white;
-    margin-left: 25vw;
+    margin-left: 28vw;
   }
   .header a{
     display: inline-block;
@@ -77,7 +78,7 @@
     float: right;
   }
   .header{
-    padding: 0 10px 0 0;
+    padding: 10px 10px 0 0;
   }
   .logo{
     float: left;
@@ -90,7 +91,7 @@
   .bk{
     position: absolute;
     width: 100%;
-    height: 76vh;
+    height: 78vh;
     top: 0;
     left: 0;
     z-index: -1;
@@ -111,8 +112,8 @@
     margin-right: 5vw;
   }
   .cil{
-    width: 14vw;
-    height: 14vw;
+    width: 12vw;
+    height: 12vw;
     border-radius: 50%;
     border: white 2px solid;
     overflow: hidden;
@@ -132,11 +133,12 @@
     background-size: 140% 160%;
   }
   .select{
-    margin-top: 50vh;
-    margin-left:24vw;
+    margin-top: 54vh;
+    margin-left:27vw;
   }
   .tip{
     margin-top: 10px;
     font-size: 14px;
+    font-weight: bold;
   }
 </style>
