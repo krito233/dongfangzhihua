@@ -5,7 +5,8 @@
     <ul>
       <li>账&emsp;号<input type="text" class="put"></li>
       <li>密&emsp;码<input type="text" class="put"></li>
-      <li class="rem"><input type="checkbox" style="cursor: pointer">记住我</li>
+      <li><el-radio v-model="radio" label="1">老师</el-radio>
+      <el-radio v-model="radio" label="2">学生</el-radio></li>
       <li><button type="submit" class="go_go_go">登&emsp;录</button></li>
       <router-link to="/add">登录成功</router-link>
     </ul>
@@ -15,7 +16,12 @@
 
 <script>
     export default {
-        name: "login"
+        name: "login",
+        data () {
+            return {
+                radio: '1'
+            };
+        }
     }
 </script>
 
