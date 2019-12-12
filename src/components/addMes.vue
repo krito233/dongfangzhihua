@@ -2,54 +2,131 @@
   <div class="main_add">
     <div class="center_add">
       <p class="luru">录入信息</p>
-      <ul>
-        <li>名&emsp;称<input type="text" class=""></li>
-        <li>省&emsp;份<input type="text"></li>
-        <li>城&emsp;市<input type="text"></li>
-        <li>地&emsp;区<input type="text"></li>
-        <li>类&emsp;型<input type="text"></li>
-        <li>民&emsp;族<input type="text"></li>
-        <li><p class="jj">简&emsp;介</p><textarea name="" id="" cols="30" rows="10" class="long"></textarea><div style="clear: both"></div></li>
-        <li>详细地址<input type="text"></li>
-        <li>路&emsp;线<input type="text"></li>
-        <li>时&emsp;间<input type="text"></li>
-        <li>电&emsp;话<input type="text"></li>
-        <li>票&emsp;务<input type="text"></li>
+      <ul v-model="info">
+        <li>名&emsp;称<input type="text" class="" v-model="info.name"></li>
+        <li>省&emsp;份<input type="text" v-model="info.province"></li>
+        <li>城&emsp;市<input type="text" v-model="info.city"></li>
+        <li>地&emsp;区<input type="text" v-model="info.area"></li>
+        <li>类&emsp;型<input type="text"  v-model="info.type"></li>
+        <li>民&emsp;族<input type="text"  v-model="info.nationality"></li>
+        <li><p class="jj">简&emsp;介</p><textarea name="" id="" cols="30" rows="10" class="long" v-model="info.intru"></textarea><div style="clear: both"></div></li>
+        <li>详细地址<input type="text" v-model="info.address"></li>
+        <li>路&emsp;线<input type="text" v-model="info.route"></li>
+        <li>时&emsp;间<input type="text" v-model="info.time"></li>
+        <li>电&emsp;话<input type="text"  v-model="info.phone"></li>
+        <li>票&emsp;务<input type="text" v-model="info.ticket"></li>
         <li>图&emsp;片<el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://106.15.248.47:8080/file/"
           list-type="picture-card"
           :on-preview="handlePictureCardPreview"
-          :on-remove="handleRemove">
+          :on-remove="handleRemove"
+          :auto-upload="true"
+          :http-request="uploadimg"
+        >
           <i class="el-icon-plus"></i>
         </el-upload>
           <el-dialog :visible.sync="dialogVisible">
             <img width="100%" :src="dialogImageUrl" alt="">
           </el-dialog></li>
-        <button type="submit" class="sub">提交</button>
+        <button type="submit" class="sub" @click="updata">提交</button>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "addMes",
-        data() {
-            return {
-                dialogImageUrl: '',
-                dialogVisible: false
-            };
-        },
-        methods: {
-            handleRemove(file, fileList) {
-                console.log(file, fileList);
-            },
-            handlePictureCardPreview(file) {
-                this.dialogImageUrl = file.url;
-                this.dialogVisible = true;
-            }
+  import {request,head} from '../net/request'
+  export default {
+    name: "addMes",
+    inject: ['reload'],
+    data() {
+      return {
+        dialogImageUrl: '',
+        dialogVisible: false,
+        // imgurl: '',
+        info: {
+          name: '',
+          province: '',
+          city: '',
+          area: '',
+          type: '',
+          nationality: '',
+          intru: '',
+          address: '',
+          route: '',
+          time: '',
+          phone: '',
+          ticket: '',
+          images: ''
         }
+      };
+    },
+    methods: {
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePictureCardPreview(file) {
+        this.dialogImageUrl = file.url
+        this.info.images = file.url
+        this.dialogVisible = true
+        console.log(this.info.images)
+      },
+      updata () {
+        let _this = this
+        request({
+          url: '/viewpoint',
+          method: 'post',
+          headers: {
+            Authorization: localStorage.getItem('token')
+          },
+          params: {
+            addressString: _this.info.address,
+            areaString: _this.info.area,
+            cityString: _this.info.city,
+            imagesString: _this.info.images,
+            introductionString: _this.info.intru,
+            nameString: _this.info.name,
+            nationalityString: _this.info.nationality,
+            phoneString: _this.info.phone,
+            provinceString: _this.info.province,
+            routeString: _this.info.route,
+            ticketString: _this.info.ticket,
+            timeString: _this.info.time,
+            typeString: _this.info.type
+          }
+        }).then(res => {
+          console.log(res)
+          alert('上传成功！')
+          _this.reload()
+        }).catch(e => {
+          console.log(e)
+        })
+      },
+      uploadimg (f) {
+        console.log(this.info.images)
+        let _this = this
+        this.info.images = f.url
+        // console.log(f.url)
+        // console.log(localStorage.getItem('token'))
+        let param = new FormData()
+        param.append('file', f.file)
+        this.$http.post(head + '/file',param,{
+          headers: {
+            Authorization: localStorage.getItem('token')
+          }
+        }).then(res => {
+          // console.log(res)
+          if(_this.info.images) {
+            _this.info.images = _this.info.images + ',' + res.data
+          } else {
+            _this.info.images = res.data
+          }
+        }).catch(e => {
+          console.log(e)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>
