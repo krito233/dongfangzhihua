@@ -1,7 +1,7 @@
 <template>
 <div class="main_log">
   <div class="center_log">
-    <img src="../assets/log.jpg" alt="" class="bk_log">
+    <router-link to="/"><img src="../assets/log.jpg" alt="" class="bk_log"></router-link>
     <ul>
       <li>账&emsp;号<input type="text" class="put"></li>
       <li>密&emsp;码<input type="text" class="put"></li>
