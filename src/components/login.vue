@@ -2,27 +2,66 @@
 <div class="main_log">
   <div class="center_log">
     <router-link to="/"><img src="../assets/log.jpg" alt="" class="bk_log"></router-link>
-    <ul>
-      <li>账&emsp;号<input type="text" class="put"></li>
-      <li>密&emsp;码<input type="text" class="put"></li>
-      <li><el-radio v-model="radio" label="1">老师</el-radio>
-      <el-radio v-model="radio" label="2">学生</el-radio></li>
-      <li><button type="submit" class="go_go_go">登&emsp;录</button></li>
-      <router-link to="/add">登录成功</router-link>
+    <img src="../assets/log.jpg" alt="" class="bk_log">
+    <ul :model="userinfo">
+      <li>账&emsp;号<input type="text" class="put" v-model="userinfo.username"></li>
+      <li>密&emsp;码<input type="text" class="put" v-model="userinfo.password"></li>
+<!--      <li><el-radio v-model="userinfo.role" label="1" value="">老师</el-radio>-->
+<!--      <el-radio v-model="userinfo.role" label="2" value="">学生</el-radio></li>-->
+      <li><button type="submit" class="go_go_go" @click="submit">登&emsp;录</button></li>
+<!--      <router-link to="/add">登录成功</router-link>-->
     </ul>
   </div>
 </div>
 </template>
 
 <script>
-    export default {
-        name: "login",
-        data () {
-            return {
-                radio: '1'
-            };
+  // import {mutations} from 'vuex'
+  import {request} from '../net/request'
+  export default {
+    name: "login",
+    data () {
+      return {
+        radio: '1',
+        userinfo: {
+          username: '',
+          password: '',
+          role: ''
         }
+      }
+    },
+    methods: {
+      submit () {
+        let _this = this
+        if(!_this.userinfo.username&&!_this.userinfo.password) {
+          alert("用户名或密码不能为空！");
+        } else {
+          request({
+            url: '/auth/login',
+            params: {
+              username: _this.userinfo.username,
+              password: _this.userinfo.password,
+              rememberMe: 1
+            }
+          }).then(res => {
+            if (res.data.substring(0,1) === '{') {
+              // console.log(res)
+              // console.log(res.data)
+              // console.log(res.data.substring(7,res.data.length-1))
+              // console.log(JSON.stringify(res.data))
+              // localStorage.setItem("token", JSON.stringify(res.data.substring(7,res.data.length-1)))
+              localStorage.setItem("token", res.data.substring(7,res.data.length-1))
+              _this.$router.push('/add')
+            }else {
+              alert('用户或密码错误！')
+            }
+          }).catch(e => {
+            console.log(e)
+          })
+        }
+      }
     }
+  }
 </script>
 
 <style scoped>

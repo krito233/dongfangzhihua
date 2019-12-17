@@ -22,9 +22,9 @@
 </template>
 
 <script>
-    export default {
-        name: "sy"
-    }
+  export default {
+      name: "sy",
+  }
 </script>
 
 <style scoped>
