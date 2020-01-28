@@ -1,5 +1,6 @@
 <template>
   <div class="main_add">
+    <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
     <div class="center_add">
       <p class="luru">录入信息</p>
       <ul v-model="info">
@@ -212,5 +213,13 @@
     cursor: pointer;
     margin-top: 2vh;
     margin-bottom: 5vh;
+  }
+  .logo{
+    float: left;
+    width: 4vw;
+    height: 4vw;
+    z-index: 10;
+    margin-top: 10px;
+    margin-left: 25px;
   }
 </style>

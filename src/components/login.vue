@@ -1,6 +1,7 @@
 <template>
 <div class="main_log">
   <div class="center_log">
+    <router-link to="/"><img src="../assets/log.jpg" alt="" class="bk_log"></router-link>
     <img src="../assets/log.jpg" alt="" class="bk_log">
     <ul :model="userinfo">
       <li>账&emsp;号<input type="text" class="put" v-model="userinfo.username"></li>
