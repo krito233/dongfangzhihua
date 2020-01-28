@@ -4,7 +4,7 @@
     <img src="../assets/log.jpg" alt="" class="bk_log">
     <ul :model="userinfo">
       <li>账&emsp;号<input type="text" class="put" v-model="userinfo.username"></li>
-      <li>密&emsp;码<input type="text" class="put" v-model="userinfo.password"></li>
+      <li>密&emsp;码<input type="password" class="put" v-model="userinfo.password"></li>
 <!--      <li><el-radio v-model="userinfo.role" label="1" value="">老师</el-radio>-->
 <!--      <el-radio v-model="userinfo.role" label="2" value="">学生</el-radio></li>-->
       <li><button type="submit" class="go_go_go" @click="submit">登&emsp;录</button></li>

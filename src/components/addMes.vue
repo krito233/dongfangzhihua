@@ -7,12 +7,17 @@
         <li>省&emsp;份<input type="text" v-model="info.province"></li>
         <li>城&emsp;市<input type="text" v-model="info.city"></li>
         <li>地&emsp;区<input type="text" v-model="info.area"></li>
+        <li>经&emsp;度<input type="text" v-model="info.longitude"></li>
+        <li>纬&emsp;度<input type="text" v-model="info.latitude"></li>
         <li>类&emsp;型<input type="text"  v-model="info.type"></li>
         <li>民&emsp;族<input type="text"  v-model="info.nationality"></li>
-        <li><p class="jj">简&emsp;介</p><textarea name="" id="" cols="30" rows="10" class="long" v-model="info.intru"></textarea><div style="clear: both"></div></li>
+        <li>等&emsp;级<input type="text"  v-model="info.grade"></li>
+        <li>时&emsp;代<input type="text"  v-model="info.era"></li>
+        <li>主要景点文物<input type="text"  v-model="info.things"></li>
+        <li><p class="jj">文化简介</p><textarea name="" id="" cols="30" rows="10" class="long" v-model="info.intru"></textarea><div style="clear: both"></div></li>
         <li>详细地址<input type="text" v-model="info.address"></li>
         <li>路&emsp;线<input type="text" v-model="info.route"></li>
-        <li>时&emsp;间<input type="text" v-model="info.time"></li>
+        <li>开放时间<input type="text" v-model="info.time"></li>
         <li>电&emsp;话<input type="text"  v-model="info.phone"></li>
         <li>票&emsp;务<input type="text" v-model="info.ticket"></li>
         <li>图&emsp;片<el-upload
@@ -57,7 +62,12 @@
           time: '',
           phone: '',
           ticket: '',
-          images: ''
+          images: '',
+          grade: '',
+          era: '',
+          longitude: '',
+          latitude: '',
+          things: ''
         }
       };
     },
@@ -85,14 +95,19 @@
             cityString: _this.info.city,
             imagesString: _this.info.images,
             introductionString: _this.info.intru,
+            latitude: _this.info.latitude,
+            longitude: _this.info.longitude,
             nameString: _this.info.name,
             nationalityString: _this.info.nationality,
             phoneString: _this.info.phone,
             provinceString: _this.info.province,
+            thingsString: _this.info.things,
             routeString: _this.info.route,
             ticketString: _this.info.ticket,
             timeString: _this.info.time,
-            typeString: _this.info.type
+            typeString: _this.info.type,
+            gradeString: _this.info.grade,
+            eraString: _this.info.era
           }
         }).then(res => {
           console.log(res)
