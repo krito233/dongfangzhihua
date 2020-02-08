@@ -9,6 +9,9 @@ import login from "../components/login";
 import scenicType from "../components/scenicType";
 import list from "../components/list";
 import content from "../components/content";
+import about from "../components/about";
+import selectlist from "../components/selectlist";
+import addList from "../components/addList";
 
 
 
@@ -42,6 +45,21 @@ const router = new VueRouter({
       path: '/con',
       name: 'contene',
       component: content
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: about
+    },
+    {
+      path: '/select',
+      name: 'selectlist',
+      component: selectlist
+    },
+    {
+      path: '/addL',
+      name: 'addList',
+      component: addList
     },
   ]
 })

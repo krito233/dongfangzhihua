@@ -5,7 +5,7 @@
         <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
         <ul class="header">
           <li><router-link to="/login">用户</router-link></li>
-          <li><a href="">简介</a></li>
+          <li><router-link to="/about">简介</router-link></li>
           <li><router-link to="/">首页</router-link></li>
           <div style="clear: both"></div>
         </ul>

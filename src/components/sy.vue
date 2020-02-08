@@ -2,20 +2,21 @@
   <div>
     <div class="bk"></div>
     <div class="nav">
-      <div class="black_1"></div>
-      <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
-      <ul class="header">
-        <li><router-link to="/login">用户</router-link></li>
-        <li>简介</li>
-        <li><router-link to="/">首页</router-link></li>
-        <div style="clear: both"></div>
-      </ul>
-    </div>
+    <div class="black_1"></div>
+    <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
+    <ul class="header">
+      <li><router-link to="/login">用户</router-link></li>
+      <li><router-link to="/about">简介</router-link></li>
+      <li><router-link to="/">首页</router-link></li>
+      <div style="clear: both"></div>
+    </ul>
+  </div>
     <div class="search"><input type="text"><div class="submit"></div></div>
     <div class="select">
       <div class="cil_li"><div class="jq cil"><router-link to="/scenic" class="acil"></router-link></div><p class="tip">景区类型</p></div>
-      <div class="cil_li"><div class="dy cil"><a class="acil" href=""><div class="forbid">暂未开放</div></a></div><p class="tip">地域类型</p></div>
-      <div class="cil_li"><div class="mz cil"><a class="acil" href=""><div class="forbid">暂未开放</div></a></div><p class="tip">民族类型</p></div>
+<!--      <div class="forbid">暂未开放</div>-->
+      <div class="cil_li"><div class="dy cil"><router-link to="/select" class="acil"></router-link></div><p class="tip">地域类型</p></div>
+      <div class="cil_li"><div class="mz cil"><router-link to="/select" class="acil"></router-link></div><p class="tip">民族类型</p></div>
     </div>
     <div style="clear: both"></div>
   </div>
