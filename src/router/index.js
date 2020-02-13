@@ -12,6 +12,7 @@ import content from "../components/content";
 import about from "../components/about";
 import selectlist from "../components/selectlist";
 import addList from "../components/addList";
+import itemList from "../components/itemList";
 
 
 
@@ -61,6 +62,11 @@ const router = new VueRouter({
       name: 'addList',
       component: addList
     },
+    {
+      path: '/itemlist',
+      name: 'itemList',
+      component: itemList
+    }
   ]
 })
 export default router;

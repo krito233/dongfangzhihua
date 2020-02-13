@@ -3,6 +3,7 @@
     <router-link to="/"><img class="logo" src="../assets/logo.png"></router-link>
     <div class="center_add">
       <p class="luru">录入信息</p>
+      <p class="luru" style="color: cornflowerblue;cursor: pointer;" @click="toitem">修改已录入信息</p>
       <ul v-model="info">
         <li>名&emsp;称<input type="text" class="" v-model="info.name"></li>
         <li>省&emsp;份<input type="text" v-model="info.province"></li>
@@ -17,7 +18,7 @@
         <li>主要景点文物<input type="text"  v-model="info.things"></li>
         <li><p class="jj">文化简介</p><textarea name="" id="" cols="30" rows="10" class="long" v-model="info.intru"></textarea><div style="clear: both"></div></li>
         <li>详细地址<input type="text" v-model="info.address"></li>
-        <li>路&emsp;线<input type="text" v-model="info.route"></li>
+<!--        <li>路&emsp;线<input type="text" v-model="info.route"></li>-->
         <li>开放时间<input type="text" v-model="info.time"></li>
         <li>电&emsp;话<input type="text"  v-model="info.phone"></li>
         <li>票&emsp;务<input type="text" v-model="info.ticket"></li>
@@ -59,7 +60,7 @@
           nationality: '',
           intru: '',
           address: '',
-          route: '',
+          // route: '',
           time: '',
           phone: '',
           ticket: '',
@@ -91,24 +92,24 @@
             Authorization: localStorage.getItem('token')
           },
           params: {
-            addressString: _this.info.address,
-            areaString: _this.info.area,
-            cityString: _this.info.city,
-            imagesString: _this.info.images,
-            introductionString: _this.info.intru,
+            address: _this.info.address,
+            area: _this.info.area,
+            city: _this.info.city,
+            images: _this.info.images,
+            introduction: _this.info.intru,
             latitude: _this.info.latitude,
             longitude: _this.info.longitude,
-            nameString: _this.info.name,
-            nationalityString: _this.info.nationality,
-            phoneString: _this.info.phone,
-            provinceString: _this.info.province,
-            thingsString: _this.info.things,
-            routeString: _this.info.route,
-            ticketString: _this.info.ticket,
-            timeString: _this.info.time,
-            typeString: _this.info.type,
-            gradeString: _this.info.grade,
-            eraString: _this.info.era
+            name: _this.info.name,
+            nationality: _this.info.nationality,
+            phone: _this.info.phone,
+            province: _this.info.province,
+            things: _this.info.things,
+            // routeString: _this.info.route,
+            ticket: _this.info.ticket,
+            time: _this.info.time,
+            type: _this.info.type,
+            grade: _this.info.grade,
+            era: _this.info.era
           }
         }).then(res => {
           console.log(res)
@@ -140,6 +141,9 @@
         }).catch(e => {
           console.log(e)
         })
+      },
+      toitem () {
+        this.$router.push('/itemList')
       }
     }
   }
